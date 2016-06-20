@@ -1,10 +1,10 @@
 <ion-view  view-title="Listado canciones">
-  <ion-content ng-controller="QueueController">
+  <ion-content ng-controller="SongController">
     <div class="padding">
       <button class="button button-block button-balanced" ng-click="add()">Agregar canción</button>
     </div>
     <ion-list>
-      <ion-item href="#/edit/{{song.$id}}" ng-repeat="song in queue" class="item-icon-right item-remove-animate">
+      <ion-item href="#/songs/edit/{{song.$id}}" ng-repeat="song in songs" class="item-icon-right item-remove-animate">
         <div class="row">
           <h3 class="col">{{song.title}}</h3>
           <h3 class="col">{{song.artist}}</h3>

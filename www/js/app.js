@@ -1,28 +1,28 @@
 //main wrap da se ne poluta global namespace
 (function(){
 
-var app = angular.module('queup', ['ionic','angularMoment','firebase']);
+var app = angular.module('worshipnow', ['ionic','angularMoment','firebase']);
 
 app.config(function($stateProvider,$urlRouterProvider){
 
-  $stateProvider.state('queue',{
-    url:'/queue',
-    templateUrl:'templates/queue.html'
+  $stateProvider.state('songs',{
+    url:'/songs',
+    templateUrl:'templates/songs/list.html'
   });
 
-  $stateProvider.state('edit',{
-    url:'/edit/:songId',
+  $stateProvider.state('songs_edit',{
+    url:'/songs/edit/:songId',
     controller:'EditController',
-    templateUrl:'templates/edit.html'
+    templateUrl:'templates/songs/edit.html'
   });
 
-  $stateProvider.state('add',{
-    url:'/add',
+  $stateProvider.state('songs_add',{
+    url:'/songs/add',
     controller:'AddController',
-    templateUrl:'templates/edit.html'
+    templateUrl:'templates/songs/edit.html'
   });
 
-  $urlRouterProvider.otherwise('/queue');
+  $urlRouterProvider.otherwise('/songs');
 
 });
 
@@ -45,8 +45,8 @@ app.run(function($ionicPlatform) {
 });
 
 
-app.controller('QueueController', function($scope,Queue,$state){
-  $scope.queue = Queue;
+app.controller('SongController', function($scope,Song,$state){
+  $scope.songs = Song;
 /*
   $scope.queue.$loaded(function(){
     if($scope.queue.length === 0){
@@ -65,18 +65,18 @@ app.controller('QueueController', function($scope,Queue,$state){
   */
 
   $scope.add = function(){
-    $state.go('add');
+    $state.go('songs_add');
   };
 
   $scope.delete = function(song){
     //queueService.deletesong(songId);
-    Queue.$remove(song);
+    Song.$remove(song);
   };
 
 });
 
-app.controller('EditController', function($scope,$state,Queue){
-  var song = Queue.$getRecord($state.params.songId);
+app.controller('EditController', function($scope,$state,Song){
+  var song = Song.$getRecord($state.params.songId);
   //$scope.song = angular.copy(queueService.getsong($state.params.songId));
  $scope.song = angular.copy(song);
 
@@ -90,39 +90,40 @@ app.controller('EditController', function($scope,$state,Queue){
     // song.status = $scope.song.status;
     song = $scope.song;
     song.updatedTime = Firebase.ServerValue.TIMESTAMP;
-    Queue.$save(song);
-    $state.go('queue');
+    Song.$save(song);
+    $state.go('songs');
   }
 
   $scope.delete = function(){
   //  queueService.deletesong($scope.song.id);
       //$state.go('queue');
-      Queue.$remove(song);
-      $state.go('queue');
+      Song.$remove(song);
+      $state.go('songs');
     };
 });
 
-app.controller('AddController', function($scope,$state,Queue){
-    $scope.song = {
-        title:'Hosanna',
-        artist:'Marco Barrientos',
-        chord: 'Bm',
-        category: 'Júbilo',
-        youtubeUrl: 'https://www.youtube.com/watch?v=nv0ziW48kMs',
-        // album: 'Avivanos',
-        // creationYear: 2008,
-        // isHit: true,
-        // ofrenda: false,
-        // isNew: false,
-        // lyrics: 'Hossana... hosanna.. bla bla (8)...',
-        // spotifyUrl: 'https://open.spotify.com/track/4Vi4l3YyI7fk9X8mYOW9Rs',
-    };
+app.controller('AddController', function($scope,$state,Song){
+    // $scope.song = {
+    //     title:'Hosanna',
+    //     artist:'Marco Barrientos',
+    //     chord: 'Bm',
+    //     category: 'Júbilo',
+    //     youtubeUrl: 'https://www.youtube.com/watch?v=nv0ziW48kMs',
+    //     // album: 'Avivanos',
+    //     // creationYear: 2008,
+    //     // isHit: true,
+    //     // ofrenda: false,
+    //     // isNew: false,
+    //     // lyrics: 'Hossana... hosanna.. bla bla (8)...',
+    //     // spotifyUrl: 'https://open.spotify.com/track/4Vi4l3YyI7fk9X8mYOW9Rs',
+    // };
+    $scope.song={};
     $scope.save = function(){
         //  queueService.addsong($scope.song);
         //$state.go('queue');
         $scope.song.updatedTime = Firebase.ServerValue.TIMESTAMP;
-        Queue.$add($scope.song);
-        $state.go('queue');
+        Song.$add($scope.song);
+        $state.go('songs');
     }
 
 });
