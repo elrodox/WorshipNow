@@ -1,7 +1,7 @@
 {
-  "name": "queup",
+  "name": "worshipnow",
   "version": "1.1.1",
-  "description": "queup: An Ionic project",
+  "description": "Gestiona las canciones con facilidad para ministrar las alabanzas en tu iglesia.",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",

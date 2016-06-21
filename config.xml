@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.queup175517" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>queup</name>
+  <name>Worship Now</name>
   <description>&#xD;
-        An Ionic Framework and Cordova project.&#xD;
+      Gestiona las canciones con facilidad para ministrar las alabanzas en tu iglesia.&#xD;
     </description>
-  <author email="you@example.com" href="http://example.com.com/">&#xD;
-      Your Name Here&#xD;
+  <author email="rodolfo.guinez.e@gmail.com" href="http://fisfor.cl/">&#xD;
+      Rodolfo Guíñez&#xD;
     </author>
   <content src="index.html"/>
   <access origin="*"/>
