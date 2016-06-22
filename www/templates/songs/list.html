@@ -1,17 +1,30 @@
-<ion-view  view-title="Listado canciones">
-  <ion-content ng-controller="SongController">
-    <div class="padding">
-      <button class="button button-block button-balanced" ng-click="add()">Agregar canción!</button>
-    </div>
+<ion-view  view-title="Worship Now - Canciones">
+  <ion-content ng-controller="SongController"  on-swipe-left="swipeRight()">
+    <!-- <div class="bar bar-header">
+      <h1 class="title">Listado de canciones</h1>
+    </div> -->
+   
+      <div class="padding" >
+        <button class="button button-block button-balanced" ng-click="add()">Agregar canción!</button>
+      </div>
     <ion-list>
-      <ion-item href="#/songs/edit/{{song.$id}}" ng-repeat="song in songs" class="item-icon-right item-remove-animate">
+    <!-- href="#/songs/edit/{{song.$id}}" -->
+      <ion-item  ng-repeat="song in songs" class="item-icon-right item-remove-animate">
         <div class="row">
-          <h3 class="col">{{song.title}}</h3>
-          <h3 class="col">{{song.artist}}</h3>
-        </div>
-        <div class="row">
-          <p class="col">{{song.chord}}</p>
-          <p class="col">{{song.category}}</p>
+          <div class="col col-90">
+            <div class="row">
+              <h3 class="col">{{song.title}} - {{song.artist}}</h3>
+              <!-- <h3 class="col"></h3> -->
+            </div>
+            <div class="row">
+              <p class="col">{{song.chord}}</p>
+              <p class="col">{{song.category}}</p>
+            </div>
+          </div>
+          <div class="col">
+            <button ng-hide="song.inSetList" ng-click="addToSetList(song)" class="button icon-right ion-chevron-right button-positive"></button>
+            <i ng-show="song.inSetList" class="icon ion-checkmark-round"></i>
+          </div>
         </div>
         <!-- <p><span am-time-ago="song.updatedTime"></span>: </p> -->
        <!--  <p>{{song.album}}</p>
@@ -24,8 +37,9 @@
         <p>{{song.spotifyUrl}}</p> -->
 
 
-        <i class="ion-chevron-right icon"></i>
-        <ion-option-button class="button-assertive ion-ios-trash icon-left" ng-click="delete(song)">Delete</ion-option-button>
+        <!-- <i class="ion-chevron-right icon"></i> -->
+        <ion-option-button class="button-energized ion-edit icon-left" ng-click="edit(song)"></ion-option-button>
+        <ion-option-button class="button-assertive ion-ios-trash icon-left" ng-click="delete(song)"></ion-option-button>
         
         
       </ion-item>

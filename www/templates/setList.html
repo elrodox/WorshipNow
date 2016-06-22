@@ -1,3 +1,47 @@
 <ion-view title="Set List" id="page5" class=" ">
-    <ion-content padding="true" class="has-header"></ion-content>
+    <ion-content ng-controller="SetListController" padding="true" class="has-header">
+    	
+		<!-- <div class="bar bar-header padding">
+			<h1 class="title">SetList</h1>
+		</div> -->
+		
+	    <!-- href="#/songs/edit/{{song.$id}}" -->
+	      <ion-item  ng-repeat="song in songs" class="item-icon-right item-remove-animate" on-swipe-left="swipeLeft()">
+	        <div class="row">
+	          <div class="col col-90">
+	            <div class="row">
+	              <h3 class="col">{{song.title}} - {{song.artist}}</h3>
+	              <!-- <h3 class="col"></h3> -->
+	            </div>
+	            <div class="row">
+	              <p class="col">{{song.chord}}</p>
+	              <p class="col">{{song.category}}</p>
+	            </div>
+	          </div>
+	          <div class="col">
+	            <button ng-click="remove(song)" class="button button-assertive ion-close icon-center"></button>
+	            <!-- <i ng-show="song.inSetList" class="icon ion-checkmark-round"></i> -->
+	          </div>
+	        </div>
+	        <!-- <p><span am-time-ago="song.updatedTime"></span>: </p> -->
+	       <!--  <p>{{song.album}}</p>
+	        <p>{{song.creationYear}}</p>
+	        <p>{{song.isHit}}</p>
+	        <p>{{song.ofrenda}}</p>
+	        <p>{{song.isNew}}</p>
+	        <p>{{song.lyrics}}</p>
+	        <p>{{song.youtubeUrl}}</p>
+	        <p>{{song.spotifyUrl}}</p> -->
+
+
+	        <!-- <i class="ion-chevron-right icon"></i> -->
+	        <!-- <ion-option-button class="button-energized ion-edit icon-left" ng-click="edit(song)"></ion-option-button>
+	        <ion-option-button class="button-assertive ion-ios-trash icon-left" ng-click="delete(song)"></ion-option-button> -->
+	        
+	        
+	      </ion-item>
+	    </ion-list>
+
+
+    </ion-content>
 </ion-view>

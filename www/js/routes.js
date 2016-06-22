@@ -20,6 +20,12 @@ app.config(function($stateProvider,$urlRouterProvider){
     templateUrl:'templates/songs/edit.html'
   });
 
+  $stateProvider.state('users_login',{
+    url:'/users/login',
+    controller:'userLoginController',
+    templateUrl:'templates/users/login.html'
+  });
+
 
   $stateProvider
   .state('tabsController.historial', {
@@ -62,6 +68,7 @@ app.config(function($stateProvider,$urlRouterProvider){
   })
   ;
 
+  // $urlRouterProvider.otherwise('/users_login');
   $urlRouterProvider.otherwise('/tabs_controller/song_list');
   // $urlRouterProvider.otherwise('/songs');
 
